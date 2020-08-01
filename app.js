@@ -2,6 +2,7 @@ const http = require("http");
 const url = require("url");
 // const { totalScore } = require("./totalScore");
 const { totalScoreBatchHandler } = require("./totalScoreBatchHandler");
+const cron = require("node-cron")
 
 http
   .createServer(async (req, res) => {
@@ -15,3 +16,5 @@ http
   .listen(8080, () => {
     console.log("server is now listening htttp://localhost:8080");
   });
+
+cron.schedule('*/3 * * * * *', () => console.log('3秒ごとに実行'));
